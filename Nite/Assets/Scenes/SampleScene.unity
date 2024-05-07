@@ -977,7 +977,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -569646069, guid: a33f74d43763a45f6801fdc8edaa9ad8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
   m_Size: {x: 0.8, y: 1}
@@ -1041,6 +1041,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WalkL: 0
+  WalkR: 0
   speed: 5
   groundDist: 1
   terrainLayer:

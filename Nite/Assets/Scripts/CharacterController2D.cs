@@ -4,6 +4,7 @@ public class CharacterController2D : MonoBehaviour
 {
     private Animator animator;
     public bool WalkL = false;
+    public bool WalkR = false;
     public float speed;
     public float groundDist;
 
@@ -13,7 +14,7 @@ public class CharacterController2D : MonoBehaviour
 
     void Start()
     {
-        animator = GetComponent<Animator>(); // Corrected line
+        animator = GetComponent<Animator>(); 
         rb = GetComponent<Rigidbody>();
     }
 
@@ -59,6 +60,20 @@ public class CharacterController2D : MonoBehaviour
         if (animator != null) // Check if animator is assigned
         {
             animator.SetBool("WalkL", WalkL);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            WalkR = true;
+        }
+
+        else if (Input.GetKeyUp(KeyCode.D))
+        {
+            WalkR = false;
+        }
+
+        if (animator != null) // Check if animator is assigned
+        {
+            animator.SetBool("WalkR", WalkR);
         }
     }
 }
