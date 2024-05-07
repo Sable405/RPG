@@ -2,7 +2,9 @@ using UnityEngine;
 
 public class CharacterController2D : MonoBehaviour
 {
-      public float speed;
+    private Animator animator;
+    public bool WalkL = false;
+    public float speed;
     public float groundDist;
 
     public LayerMask terrainLayer;
@@ -11,23 +13,24 @@ public class CharacterController2D : MonoBehaviour
 
     void Start()
     {
-      rb = gameObject.GetComponent<Rigidbody>();
+        animator = GetComponent<Animator>(); // Corrected line
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-      RaycastHit hit; 
-      Vector3 castPos = transform.position;
-      castPos.y +=1;
-      if (Physics.Raycast(castPos, -transform.up,out hit, Mathf.Infinity, terrainLayer))
-      {
-        if (hit.collider != null)
+        RaycastHit hit;
+        Vector3 castPos = transform.position;
+        castPos.y += 1;
+        if (Physics.Raycast(castPos, -transform.up, out hit, Mathf.Infinity, terrainLayer))
         {
-            Vector3 movePos = transform.position;
-            movePos.y = hit.point.y + groundDist;
-            transform.position = movePos;
+            if (hit.collider != null)
+            {
+                Vector3 movePos = transform.position;
+                movePos.y = hit.point.y + groundDist;
+                transform.position = movePos;
+            }
         }
-      }
 
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
@@ -41,6 +44,21 @@ public class CharacterController2D : MonoBehaviour
         else if (x != 0 && x > 0)
         {
             sr.flipX = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            WalkL = true;
+        }
+
+        else if (Input.GetKeyUp(KeyCode.A))
+        {
+            WalkL = false;
+        }
+
+        if (animator != null) // Check if animator is assigned
+        {
+            animator.SetBool("WalkL", WalkL);
         }
     }
 }

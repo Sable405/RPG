@@ -6,6 +6,8 @@ public class FollowPlayer : MonoBehaviour
     public float smoothSpeed = 0.125f; // Speed at which the camera follows the player
     public Vector3 offset; // Offset of the camera from the player
 
+  
+
     void FixedUpdate()
     {
         if (player != null)
@@ -20,7 +22,7 @@ public class FollowPlayer : MonoBehaviour
             transform.position = smoothedPosition;
 
             // Make sure the camera's rotation remains fixed
-            transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+            transform.rotation = Quaternion.Euler(47.997f, transform.rotation.eulerAngles.y, 0f);
         }
     }
 }
