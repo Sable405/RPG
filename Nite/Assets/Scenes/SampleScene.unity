@@ -1042,6 +1042,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WalkL: 0
   WalkR: 0
+  WalkS: 0
+  WalkW: 0
   speed: 5
   groundDist: 1
   terrainLayer:
