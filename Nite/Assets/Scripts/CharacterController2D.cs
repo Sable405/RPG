@@ -8,6 +8,9 @@ public class CharacterController2D : MonoBehaviour
     public bool WalkR = false;
     public bool WalkS = false;
     public bool WalkW = false;
+
+    // Multiple Directons
+    public bool WalkWD = false;
     public float speed;
     public float groundDist;
 
@@ -42,7 +45,7 @@ public class CharacterController2D : MonoBehaviour
         rb.velocity = moveDir * speed;
 
         
-
+    //Walk Animations
         if (Input.GetKeyDown(KeyCode.A))
         {
             WalkR = true;
@@ -104,6 +107,9 @@ public class CharacterController2D : MonoBehaviour
         {
             animator.SetBool("WalkW", WalkW);
         }
+
+        // Idle Directions
+    
     }
 
 }
