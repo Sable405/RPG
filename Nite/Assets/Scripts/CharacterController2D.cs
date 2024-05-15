@@ -108,7 +108,19 @@ public class CharacterController2D : MonoBehaviour
             animator.SetBool("WalkW", WalkW);
         }
 
-        // Idle Directions
+        // Run Control
+          if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+           speed = speed * 1.5f;
+            animator.speed = speed; 
+
+        }
+        else if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+           speed = speed / 1.5f;
+           animator.speed = speed / 1.5f;
+            
+        }
     
     }
 
