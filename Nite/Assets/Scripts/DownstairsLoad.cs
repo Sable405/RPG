@@ -5,26 +5,21 @@ using UnityEngine;
 public class DownstairsLoad : MonoBehaviour
 {
     public GameObject TBT;
-     public GameObject DownStairs;
+    public GameObject DownStairs;
     public GameObject PPlayer;
-    public Transform waypoint; 
+    public Transform waypoint;
     private bool isPlayerInTrigger = false;
+    private bool hasTransitioned = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-     //   TBT.SetActive(true);
-      //  DownStairs.SetActive(false);
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        if (isPlayerInTrigger)
+        if (isPlayerInTrigger && !GameManager.Instance.IsCooldownActive() && !hasTransitioned)
         {
             TBT.SetActive(false);
             DownStairs.SetActive(true);
             PPlayer.transform.position = waypoint.position;
+            hasTransitioned = true;
+            GameManager.Instance.StartCooldown();
         }
     }
 
@@ -33,6 +28,7 @@ public class DownstairsLoad : MonoBehaviour
         if (other.gameObject == PPlayer)
         {
             isPlayerInTrigger = true;
+            hasTransitioned = false;
         }
     }
 

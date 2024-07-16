@@ -13,8 +13,8 @@ public class TBTBACK : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Bedroom.SetActive(false);
-        TBT.SetActive(true);
+      //  Bedroom.SetActive(false);
+      //  TBT.SetActive(true);
     }
 
     // Update is called once per frame
